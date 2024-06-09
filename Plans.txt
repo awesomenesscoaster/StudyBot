@@ -1,0 +1,41 @@
+- Flashcards
+    - Add
+    - View
+    - Review
+    - Remove
+
+- Timer till event (must add a specific event to track that specific timer)
+    - timer directory
+        - embed
+    - Start a new one
+    - Watch the timer
+    - Mention user when it goes off
+    - Edit timer?
+
+- Study Sessions
+    - Ping everyone
+    - Set a start/end time?
+    - Every x minutes....take a break!
+
+- Connect to google classroom, remind, google calendar....
+    - post announcements
+    - next test?
+
+- to-do list
+    - can be study sessions....
+    - can also be for normal things to do...
+    - goal settings?
+
+- bulletin board
+    - embed
+    - post a link to save to memory
+    - helpful stuff ig
+    - helpful links
+
+- Help (directory)
+    - embed
+    - list of all the possible functions
+
+** everything as a slash command?
+
+-- COMPLETED --
