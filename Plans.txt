@@ -13,10 +13,9 @@
     - post announcements
     - next test?
 
-- to-do list
-    - can be study sessions....
-    - can also be for normal things to do...
-    - goal settings?
+- idea building?
+    - people add suggestions and look at it over time...
+    
 
 - bulletin board
     - embed
@@ -28,8 +27,6 @@
     - embed
     - list of all the possible functions
 
-** everything as a slash command?
-
 -- COMPLETED --
 
 - Timer till event (must add a specific event to track that specific timer)
@@ -39,3 +36,11 @@
     - Watch the timer
     - Mention user when it goes off
     - Edit timer?
+
+- to-do list
+    - can be study sessions....
+    - can also be for normal things to do...
+    - goal settings?
+
+- Q & a
+    - any question posted automatically creates a thread.

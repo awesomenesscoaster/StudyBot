@@ -15,12 +15,12 @@ class StudyTimerCog(commands.Cog):
     async def send_embed(self,ctx):
         embed = discord.Embed(
             title = 'Timer Help',
-            description= 'Start a countdown for an event or a timer to help study. \n \n'
+            description=
             'Here are all the current commands available for the timer directory: \n'
-            '**StartTimer** - Starts a current timer \n'
-            '**ViewTimers** - See a list of all the current timers in the server \n'
-            '**ViewLiveTimer** - See a live countdown of a specific timer \n'
-            '**RemoveTimer** - Remove a timer',
+            '**!StartTimer** - Starts a current timer \n'
+            '**!ViewTimers** - See a list of all the current timers in the server \n'
+            '**!ViewLiveTimer** - See a live countdown of a specific timer \n'
+            '**!RemoveTimer** - Remove a timer',
             color=discord.Color.from_rgb(209, 178, 243),
         )
         await ctx.send(embed=embed)
@@ -256,7 +256,7 @@ class StudyTimerCog(commands.Cog):
         except asyncio.TimeoutError:
             await ctx.send('You took to long to respond. Command canceled.')
     
-    @tasks.loop(seconds=5)
+    @tasks.loop(seconds=2)
     async def check_timers(self):
         now = datetime.now()
         for server_id, server_timers in list(self.timers.items()):
