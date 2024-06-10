@@ -4,14 +4,6 @@
     - Review
     - Remove
 
-- Timer till event (must add a specific event to track that specific timer)
-    - timer directory
-        - embed
-    - Start a new one
-    - Watch the timer
-    - Mention user when it goes off
-    - Edit timer?
-
 - Study Sessions
     - Ping everyone
     - Set a start/end time?
@@ -39,3 +31,11 @@
 ** everything as a slash command?
 
 -- COMPLETED --
+
+- Timer till event (must add a specific event to track that specific timer)
+    - timer directory
+        - embed
+    - Start a new one
+    - Watch the timer
+    - Mention user when it goes off
+    - Edit timer?

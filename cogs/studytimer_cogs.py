@@ -1,4 +1,4 @@
-from discord.ext import commands
+from discord.ext import commands, tasks
 import discord
 import asyncio
 from datetime import datetime, timedelta
@@ -7,13 +7,11 @@ class StudyTimerCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.timers = {}
+        self.check_timers.start()
         
-    #timers = {
-        #server_id: {
-            #"topic 1": {"duration" : time, "start_time" : datetime.now()}...
-        #}
-    #}
-       
+    def cog_unload(self):
+        self.check_timers.cancel()
+           
     async def send_embed(self,ctx):
         embed = discord.Embed(
             title = 'Timer Help',
@@ -86,12 +84,13 @@ class StudyTimerCog(commands.Cog):
             return duration
             
         #add the duration to the dictionary....
-        def setTime(topic: str, duration: str):
+        def setTime(ctx, topic: str, duration: str):
             server_id = ctx.guild.id
             self.timers.setdefault(server_id, {})
             self.timers[server_id][topic] = {
                 'duration' : duration,
-                'start_time' : datetime.now()
+                'start_time' : datetime.now(),
+                'channel_id' : ctx.channel.id
             }
         
         #Timeout Check (15 seconds)
@@ -106,7 +105,7 @@ class StudyTimerCog(commands.Cog):
                     topic_wait = await self.bot.wait_for('message', check=check, timeout = 15)
                     topic = topic_wait.content
                     
-                    setTime(topic, duration)
+                    setTime(ctx, topic, duration)
                     await ctx.send(f'Timer for **{topic}** set to **{duration}** seconds in this server.')
                     
                     return None
@@ -256,6 +255,27 @@ class StudyTimerCog(commands.Cog):
             await ctx.send(f'Invalid topic: **{user_input}**. Command Canceled.')
         except asyncio.TimeoutError:
             await ctx.send('You took to long to respond. Command canceled.')
-        
+    
+    @tasks.loop(seconds=5)
+    async def check_timers(self):
+        now = datetime.now()
+        for server_id, server_timers in list(self.timers.items()):
+            for topic, timer_info in list(server_timers.items()):
+                elapsed = now - timer_info["start_time"]
+                remaining = timedelta(seconds=timer_info['duration']) - elapsed
+                remaining_seconds = int(remaining.total_seconds())
+                if remaining_seconds <= 0:
+                    channel = self.bot.get_channel(timer_info['channel_id'])
+                    if channel:
+                        embed = discord.Embed(
+                            title= f'{topic} - Time is Up',
+                            description= f'The timer for {topic} has ended.',
+                            color = discord.Color.from_rgb(209, 178, 243)
+                        )
+                        await channel.send(embed=embed)
+                    del self.timers[server_id][topic]
+                    if not self.timers[server_id]:
+                        del self.timers[server_id]
+             
 async def setup(bot):
     await bot.add_cog(StudyTimerCog(bot))
