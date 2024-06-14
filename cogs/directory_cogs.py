@@ -10,7 +10,9 @@ class DirectoryCog(commands.Cog):
             title= 'Commands Directory',
             description= '**!TimerHelp** - List of all timer commands \n'
             '**!ToDoHelp** - List of all the to-do list commands \n'
-            '**!QAHelp** - List of all the Q&A commands',
+            '**!QAHelp** - List of all the Q&A commands \n'
+            '**!SessionsHelp** - List of all study session commands \n'
+            '**!BreakHelp** - List of all break-reminder commands.',
             color= discord.Color.from_rgb(180, 244, 184)
         )
         await ctx.send(embed=embed)

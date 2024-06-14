@@ -4,10 +4,8 @@
     - Review
     - Remove
 
-- Study Sessions
-    - Ping everyone
-    - Set a start/end time?
-    - Every x minutes....take a break!
+
+- CHAT GPT connection?
 
 - Connect to google classroom, remind, google calendar....
     - post announcements
@@ -15,17 +13,12 @@
 
 - idea building?
     - people add suggestions and look at it over time...
-    
 
 - bulletin board
     - embed
     - post a link to save to memory
     - helpful stuff ig
     - helpful links
-
-- Help (directory)
-    - embed
-    - list of all the possible functions
 
 -- COMPLETED --
 
@@ -44,3 +37,15 @@
 
 - Q & a
     - any question posted automatically creates a thread.
+
+- Help (directory)
+    - embed
+    - list of all the possible functions
+
+- Study Sessions
+    - Ping everyone
+    - Set a start/end time?
+    - Every x minutes....take a break!
+
+- Breaks
+    - every x minutes/seconds, send a message to take a break
