@@ -27,8 +27,8 @@ class FlashcardsCog(commands.Cog):
             description= 
             "**!ViewCards** - View a list of all review sets. \n"
             "**!AddCard** - Add a flashcard set to the existing list. \n"
-            "**!RemoveCards** - Remove a flashcard set from the list \n "
-            "**!ReviewCards** - Review/Practice with a flashcard set.",
+            "**!RemoveCard** - Remove a flashcard set from the list \n "
+            "**!RemoveSet** - Remove a flashcard set from the list \n",
             color=discord.Color.from_rgb(146, 197, 241),
         )
         await ctx.send(embed=embed)
@@ -253,11 +253,13 @@ class FlashcardsCog(commands.Cog):
             count = 1
             flashcards_display = ''
             for term,definition in self.flashcards[server_id][topic_choice].items():
-                flashcards_display += f'{count}. **{term}** - {definition}'
+                flashcards_display += f'{count}. **{term}** - {definition} \n'
+                count += 1
             
             embed = discord.Embed(
                 title= 'Remove Flashcards',
-                description= flashcards_display + '\n \n Which flashcard (number) would you like to remove? Ex: 1',
+                description= flashcards_display + '\n'
+                'Which flashcard (number) would you like to remove? Ex: 1',
                 color = discord.Color.from_rgb(146, 197, 241),
             )
             await ctx.send(embed=embed)
@@ -266,9 +268,10 @@ class FlashcardsCog(commands.Cog):
                 message = await self.bot.wait_for('message', check=check, timeout = 20)
                 chosen_card = message.content
                 
-                if not isinstance(chosen_card, int):
+                if not int(chosen_card):
                     raise ValueError(f'Invalid format for **{chosen_card}**. Must be an integer value.')
                 
+                chosen_card = int(chosen_card)
                 if chosen_card < 0 or chosen_card > len(self.flashcards[server_id][topic_choice]):
                     raise ValueError(f'Invalid format for **{chosen_card}**. Integer value must be in the given range.')
                 
@@ -277,7 +280,7 @@ class FlashcardsCog(commands.Cog):
                 embed = discord.Embed(
                     title = 'Remove Flashcards',
                     description= 'Removing the following flashcard: \n'
-                    f'**{question}** - {self.flashcards[server_id][topic_choice][question]}',
+                    f'**{question}** -- {self.flashcards[server_id][topic_choice][question]}',
                     color = discord.Color.from_rgb(146, 197, 241),
                 )
                 await ctx.send(embed=embed)
@@ -288,8 +291,46 @@ class FlashcardsCog(commands.Cog):
                 await ctx.send('You took too long to respond. Command canceled.')
         except asyncio.TimeoutError:
             await ctx.send('You took too long to respond. Command canceled.')
+    
+    #--------------- REVIEW COMMANDS ----------------#
+    
+    @commands.command()
+    async def ReviewHelp(self,ctx):
+        embed = discord.Embed(
+            title= "Review",
+            description= '**!ReviewSet** - Review the flashcards from an existing set.',
+            color= discord.Color.from_rgb(199, 198, 196),
+        )
+        await ctx.send(embed=embed)
         
         
+    
+    @commands.command()
+    async def ReviewSet(self, ctx):
+        server_id = ctx.guild.id
+        
+        if not server_id in self.flashcards:
+            await ctx.send('There are no flashcard sets.')
+            return
+
+        server_topics = self.flashcards[server_id]
+        
+        if not server_topics:
+            await ctx.send('There are no flashcard sets.')
+            return
+
+        topics_list = '\n'.join(f'- {topic}' for topic in server_topics)
+        
+        embed = discord.Embed(
+            title = "Review Set",
+            description= f'Current flashcard sets: \n {topics_list} \n'
+            'Which set would you like to review?',
+            color=discord.Color.from_rgb(146, 197, 241),
+        )
+        await ctx.send(embed=embed)
+        
+        def check(message):
+            return message.author == ctx.author and message.channel == ctx.channel
 
 async def setup(bot):
     await bot.add_cog(FlashcardsCog(bot))
