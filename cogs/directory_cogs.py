@@ -14,7 +14,8 @@ class DirectoryCog(commands.Cog):
             '**!SessionsHelp** - List of all study session commands \n'
             '**!BreakHelp** - List of all break/reminder commands. \n'
             '**!FlashcardHelp** - List of all flashcard commands. \n'
-            '**!ReviewHelp** - List of all commands to review/practice with flashcards \n\n'
+            '**!ReviewHelp** - List of all commands to review/practice with flashcards \n \n'
+            '**!Suggestions** - Write a suggestion for the bot for future updates \n \n'
             '**!chatgpt** - [BETA - Not complete yet] Communicate right with chatgpt',
             color= discord.Color.from_rgb(180, 244, 184)
         )

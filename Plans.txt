@@ -53,4 +53,8 @@
     - Write Mode
 
 
-- CHAT GPT connection?
+- CHAT GPT connection
+
+- suggestions
+    - have the user write suggestions to review for later
+    
