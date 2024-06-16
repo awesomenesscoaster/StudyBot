@@ -1,7 +1,6 @@
 from discord.ext import commands
 import discord
 
-
 class DirectoryCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -15,7 +14,8 @@ class DirectoryCog(commands.Cog):
             '**!SessionsHelp** - List of all study session commands \n'
             '**!BreakHelp** - List of all break/reminder commands. \n'
             '**!FlashcardHelp** - List of all flashcard commands. \n'
-            '**!ReviewHelp** - List of all commands to review/practice with flashcards',
+            '**!ReviewHelp** - List of all commands to review/practice with flashcards \n\n'
+            '**!chatgpt** - [BETA - Not complete yet] Communicate right with chatgpt',
             color= discord.Color.from_rgb(180, 244, 184)
         )
         await ctx.send(embed=embed)

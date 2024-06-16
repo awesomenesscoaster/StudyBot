@@ -1,11 +1,3 @@
-- Flashcards
-    - Add
-    - View
-    - Review
-    - Remove
-
-
-- CHAT GPT connection?
 
 - Connect to google classroom, remind, google calendar....
     - post announcements
@@ -49,3 +41,16 @@
 
 - Breaks
     - every x minutes/seconds, send a message to take a break
+
+- Flashcards
+    - Add
+    - View
+    - Review
+    - Remove
+
+- Review Games
+    - Flashcards
+    - Write Mode
+
+
+- CHAT GPT connection?
