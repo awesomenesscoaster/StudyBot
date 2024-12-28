@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import asyncio
 import random
+
 class FlashcardsView(discord.ui.View):
     def __init__(self, bot, ctx, flashcards, topic):
         super().__init__(timeout=None)
