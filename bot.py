@@ -2,7 +2,6 @@
 # import discord
 # from dataclasses import dataclass
 
-# BOT_TOKEN = 'MTI0ODA0OTg0NjE5NjI0MDQ1Ng.GTUJJl.d3OaFn9sOmN4EpwsFGBkYde5Rh4dubHX9eYxoE'
 # CHANNEL_ID = 1248046073889689652
 
 # @dataclass

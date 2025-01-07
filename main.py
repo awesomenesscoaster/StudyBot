@@ -16,4 +16,4 @@ async def load_cogs():
 async def on_ready():
     await load_cogs()
     
-bot.run('#######################################')
+bot.run('##################################')
