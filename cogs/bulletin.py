@@ -18,7 +18,7 @@ class BulletinCog(commands.Cog):
     
     @commands.command()
     async def BulletinSetup(self, ctx):
-        embed = discord.Embed(
+        embed = discord.Embed(  
             title = "Bulletin Board Setup",
             description="Which channel would you like to indicate as the location to post your bulletin board \n \nType 'cancel' to cancel the command.\nType 'create' to have us create one for you.",
             color = discord.Color.from_rgb(252, 167, 87)
